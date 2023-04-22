@@ -148,9 +148,12 @@ async function linkedin() {
   }
 }
 
-cron.schedule("*/2 * * * *", () => {
+cron.schedule("*/20 * * * *", () => {
   twitter();
-  linkedin();
+});
+
+cron.schedule("*/30 * * * *", () => {
+  linkedin
 });
 
 app.post("/linkedin", async (req, res) => {
