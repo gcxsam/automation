@@ -41,7 +41,7 @@ async function twitter() {
             content:
               "You are ChatGPT, a large language model trained by OpenAI.",
           },
-          { role: "user", content: "Generate me a twitter post for the topic: Bitcoin. Also Include hashtag and Emojis. Number of words should be less than 40 words" },
+          { role: "user", content: "Write a twitter with less than 50 words for the this description: Our platform will offer fractional ownership in high-value real estate properties through the issuance of NFTs. The NFTs will represent a portion of the property's value and will be tradable on our platform. Investors can purchase these NFTs using our utility tokens, which will be ERC-20 compliant and built on the Ethereum blockchain. The utility tokens will provide investors with access to the platform's services and functionalities, including purchasing, trading, and managing their NFT investments. The platform will generate revenue by charging a transaction fee for each NFT purchase or sale. Posts should provoke engagement, and Add human tales the personal element that engenders trust. Also Include hashtag and Emojis." },
         ],
     });
     const result = response.data.choices[0].message.content;
