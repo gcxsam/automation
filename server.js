@@ -35,27 +35,30 @@ async function twitter() {
     // });
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are ChatGPT, a large language model trained by OpenAI.",
-          },
-          { role: "user", content: "Write a very short tweet with no more than 30 words for the this description: Our platform will offer fractional ownership in high-value real estate properties through the issuance of NFTs. The NFTs will represent a portion of the property's value and will be tradable on our platform. Investors can purchase these NFTs using our utility tokens, which will be ERC-20 compliant and built on the Ethereum blockchain. The utility tokens will provide investors with access to the platform's services and functionalities, including purchasing, trading, and managing their NFT investments. The platform will generate revenue by charging a transaction fee for each NFT purchase or sale. Posts should provoke engagement, and Add human tales the personal element that engenders trust. Also Include hashtag and Emojis. Number of words should be less than 30 words" },
-        ],
+      messages: [
+        {
+          role: "system",
+          content: "You are ChatGPT, a large language model trained by OpenAI.",
+        },
+        // { role: "user", content: "Write a very short tweet with no more than 30 words for the this description: Our platform will offer fractional ownership in high-value real estate properties through the issuance of NFTs. The NFTs will represent a portion of the property's value and will be tradable on our platform. Investors can purchase these NFTs using our utility tokens, which will be ERC-20 compliant and built on the Ethereum blockchain. The utility tokens will provide investors with access to the platform's services and functionalities, including purchasing, trading, and managing their NFT investments. The platform will generate revenue by charging a transaction fee for each NFT purchase or sale. Posts should provoke engagement, and Add human tales the personal element that engenders trust. Also Include hashtag and Emojis. Number of words should be less than 30 words" },
+        {
+          role: "user",
+          content:" Generate a 268 character random tweet with emoji, hashtags and sources with the following details: Our platform will offer fractional ownership in high-value real estate properties through the issuance of NFTs. The NFTs will represent a portion of the property's value and will be tradable on our platform. Investors can purchase these NFTs using our utility tokens, which will be ERC-20 compliant and built on the Ethereum blockchain. The utility tokens will provide investors with access to the platform's services and functionalities, including purchasing, trading, and managing their NFT investments. The platform is fully open source and will generate revenue by charging a transaction fee for each NFT purchase or sale. Our platform's use of blockchain technology ensures transparency, security, and efficiency in transactions, while reducing entry barriers for investors. With the growing adoption of blockchain technology and NFTs in the real estate industry, we expect our platform to have significant growth potential in the coming years. GloComX runs on DAO smart contract deployed on the Ethereum blockchain network.The hybrid DAO follow the constitution of GloComX Marketplace, which defines the roles and responsibilities of the founder, board of directors, and members, as well as the governance mechanisms for decision-making processes, amendments, and dissolution. Members will be able to submit proposals, vote on proposals, and participate in discussions and decision-making processes through a user-friendly interface. Proposals will be reviewed by the board of directors and put to a vote if they meet the criteria for consideration. Voting will be conducted using a token-based system, with each member receiving one vote per token, and votes should be tallied and recorded on the blockchain in real-time.The board will have the authority to approve proposals with a simple majority vote, and the founder should have the authority to veto any proposal approved by the board, subject to a two-thirds majority vote by the members to override the veto.The board will be responsible for setting the agenda for decision-making processes, and members should have the right to propose items for the agenda. The board will ensure that all members have access to relevant information to make informed decisions, and facilitate discussions among members to ensure that all perspectives are heard before a vote is taken.Word count should be less than 30 words please"
+        },
+      ],
     });
     const result = response.data.choices[0].message.content;
-    console.log(result)
-    if(result){
+    console.log(result);
+    if (result) {
       const client = new TwitterApi({
         appKey: process.env.API_KEY,
         appSecret: process.env.API_SECRET,
         accessToken: process.env.ACCESS_TOKEN,
         accessSecret: process.env.ACCESS_TOKEN_SECRET,
       });
-  
+
       const twitterClient = client.readWrite;
-  
+
       const tweet = async () => {
         try {
           await twitterClient.v2.tweet(result);
@@ -63,7 +66,7 @@ async function twitter() {
           console.log(e);
         }
       };
-  
+
       tweet();
     }
   } catch (error) {
