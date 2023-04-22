@@ -47,7 +47,7 @@ async function twitter() {
         // },
         {
           role: "user",
-          content:"Generate tweet with source, hashtag and emojis using the following url: https://www.glocomx.com/nft-adoption-survey"
+          content:"Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.glocomx.com/nft-adoption-survey"
         },
       ],
     });
