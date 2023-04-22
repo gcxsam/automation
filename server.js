@@ -74,7 +74,7 @@ async function twitter() {
   }
 }
 
-cron.schedule("*/5 * * * *", () => {
+cron.schedule("*/2 * * * *", () => {
   twitter();
 });
 
