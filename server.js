@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "Generate a post with source, hashtag and emojis using the following url: https://www.glocomx.com/nft-adoption-survey",
+            "Generate a post with source, hashtag and emojis using the following url: https://101blockchains.com/nft-real-estate/",
         },
       ],
     });
