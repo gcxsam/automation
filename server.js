@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.forbes.com/sites/theyec/2022/10/28/steps-companies-can-take-to-increase-nft-adoption/?sh=5280b2f663cd/",
+            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://101blockchains.com/nft-real-estate/",
         },
       ],
     });
