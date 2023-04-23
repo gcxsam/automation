@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "Generate a post with source, hashtag and emojis using the following url: https://101blockchains.com/nft-real-estate/",
+            "Generate a post with source, hashtag and emojis using the following url: https://www.blockchain-council.org/nft/nft-real-estate-explained/#:~:text=NFT%20real%20estate%20is%20digital,of%20properties%20through%20legal%20contracts",
         },
       ],
     });
