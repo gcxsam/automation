@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.glocomx.com/nft-adoption-survey",
+            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.ibtimes.com/house-always-wins-why-nfts-could-be-set-revolutionize-real-estate-market-3492666",
         },
       ],
     });
