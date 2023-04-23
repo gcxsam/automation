@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.binance.com/en/blog/nft/what-is-nft-real-estate-and-how-is-it-changing-the-real-estate-industry-2253735085697354496 https://www.forbes.com/sites/theyec/2022/10/28/steps-companies-can-take-to-increase-nft-adoption/?sh=5280b2f663cd https://www.ibtimes.com/house-always-wins-why-nfts-could-be-set-revolutionize-real-estate-market-3492666 https://www.glocomx.com/ https://www.blockchain-council.org/nft/nft-real-estate-explained/#:~:text=NFT%20real%20estate%20is%20digital,of%20properties%20through%20legal%20contracts https://www.forbes.com/sites/forbesbusinesscouncil/2022/08/04/guide-to-using-nfts-in-real-estate/?sh=4f4f3865e8a1 https://101blockchains.com/nft-real-estate/",
+            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.ibtimes.com/house-always-wins-why-nfts-could-be-set-revolutionize-real-estate-market-3492666",
         },
       ],
     });
