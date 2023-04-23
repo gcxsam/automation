@@ -110,7 +110,7 @@ async function twitterCompany() {
         {
           role: "user",
           content:
-            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: www.blockchain-council.org/nft/nft-real-estate-explained/#:~:text=NFT%20real%20estate%20is%20digital,of%20properties%20through%20legal%20contracts",
+            "Generate tweet of less than 35 words with source, hashtag and emojis using content from this following url: https://www.binance.com/en/blog/nft/what-is-nft-real-estate-and-how-is-it-changing-the-real-estate-industry-2253735085697354496",
         },
       ],
     });
