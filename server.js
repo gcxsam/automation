@@ -153,7 +153,7 @@ cron.schedule("*/20 * * * *", () => {
 });
 
 cron.schedule("*/30 * * * *", () => {
-  linkedin
+  linkedin();
 });
 
 app.post("/linkedin", async (req, res) => {
