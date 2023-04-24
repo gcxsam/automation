@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "Using any recent articles on NFT Real Estate, write an educational post of less than 100 words. insert source link, add hashtag and emojis. Posts should provoke engagement, human tales and personal element that engenders trust",
+            "Using any recent articles on NFT Real Estate, write an educational post of less than 200 words. insert source link, add hashtag and emojis. Posts should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
