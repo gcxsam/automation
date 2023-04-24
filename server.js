@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "Using any recent articles on NFT Real Estate, Generate tweet of less than 35 words with source, hashtag and emojis. Tweet should provoke engagement, human tales and personal element that engenders trust.",
+            "using any recent articles on NFT Real Estate, Generate educational tweet of less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
@@ -110,7 +110,7 @@ async function twitterCompany() {
         {
           role: "user",
           content:
-            "Using any recent articles on NFT Real Estate, Generate tweet of less than 35 words with source, hashtag and emojis. Tweet should provoke engagement, human tales and personal element that engenders trust",
+            "using any recent articles on NFT Real Estate, Generate educational tweet of less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "Using any recent articles on NFT Real Estate, write a post with hashtags, emojis and source. Posts should provoke engagement, human tales and personal element that engenders trust",
+            "Using any recent articles on NFT Real Estate, write an educational post. insert source link, add hashtag and emojis. Posts should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
