@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "using any recent articles on NFT Real Estate, Generate educational tweet on benefits of  GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace .  tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Discus GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace. Outlines requirements for investors to receive dividends or returns on investment, including timely and accurate payments, visible payment details, and a straightforward withdrawal or reinvestment process. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust.",
         },
       ],
     });
@@ -110,7 +110,7 @@ async function twitterCompany() {
         {
           role: "user",
           content:
-            "using any recent articles on NFT Real Estate, Generate educational tweet on benefits of  GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace .  tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Discus GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace. Outlines requirements for investors to receive dividends or returns on investment, including timely and accurate payments, visible payment details, and a straightforward withdrawal or reinvestment process. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust.",
         },
       ],
     });
@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "using any recent articles on NFT Real Estate, Generate educational post on benefits of  GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace .  post should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Discus GloComX Fractional Real Estate using NFTs as security and utility token to purchase the security tokens. You need a Metamask wallet To Participate in GloComX marketplace. Outlines requirements for investors to receive dividends or returns on investment, including timely and accurate payments, visible payment details, and a straightforward withdrawal or reinvestment process. Post should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust.",
         },
       ],
     });
