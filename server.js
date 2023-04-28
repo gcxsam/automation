@@ -278,7 +278,7 @@ cron.schedule("*/20 * * * *", () => {
 
 cron.schedule("*/60 * * * *", () => {
   linkedin();
-  linkedinCompany
+  linkedinCompany();
 });
 
 app.listen(5000, () =>
