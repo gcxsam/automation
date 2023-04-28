@@ -210,6 +210,67 @@ async function linkedin() {
   }
 }
 
+async function linkedinCompany() {
+  try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+        },
+        {
+          role: "user",
+          content:
+            "Write an Educational  tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+        },
+      ],
+    });
+    const result = response.data.choices[0].message.content;
+    console.log(result);
+    if (result) {
+      const postData = {
+        author: `urn:li:organization:76458953`,
+        lifecycleState: "PUBLISHED",
+        specificContent: {
+          "com.linkedin.ugc.ShareContent": {
+            shareCommentary: {
+              text: result,
+            },
+            shareMediaCategory: "NONE",
+          },
+        },
+        visibility: {
+          "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
+        },
+      };
+
+      axios
+        .post("https://api.linkedin.com/v2/ugcPosts", postData, {
+          headers: {
+            Authorization: `Bearer ${process.env.LINKEDIN_ACCESS_TOKEN1}`,
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+        });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 cron.schedule("*/20 * * * *", () => {
   twitter();
   twitterCompany()
@@ -217,39 +278,7 @@ cron.schedule("*/20 * * * *", () => {
 
 cron.schedule("*/120 * * * *", () => {
   linkedin();
-});
-
-app.post("/linkedin", async (req, res) => {
-  const postData = {
-    author: `urn:li:person:${process.env.PERSON_ID}`,
-    lifecycleState: "PUBLISHED",
-    specificContent: {
-      "com.linkedin.ugc.ShareContent": {
-        shareCommentary: {
-          text: req.body.prompt,
-        },
-        shareMediaCategory: "NONE",
-      },
-    },
-    visibility: {
-      "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
-    },
-  };
-
-  axios
-    .post("https://api.linkedin.com/v2/ugcPosts", postData, {
-      headers: {
-        Authorization: `Bearer ${process.env.LINKEDIN_ACCESS_TOKEN}`,
-        "Content-Type": "application/json",
-        "X-Restli-Protocol-Version": "2.0.0",
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error(error.response.data);
-    });
+  linkedinCompany
 });
 
 app.listen(5000, () =>
