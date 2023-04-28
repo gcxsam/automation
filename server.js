@@ -276,7 +276,7 @@ cron.schedule("*/20 * * * *", () => {
   twitterCompany()
 });
 
-cron.schedule("*/120 * * * *", () => {
+cron.schedule("*/60 * * * *", () => {
   linkedin();
   linkedinCompany
 });
