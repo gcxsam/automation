@@ -48,7 +48,7 @@ async function twitter() {
         {
           role: "user",
           content:
-            "Write an Educational  tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Write an Educational tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
@@ -110,7 +110,7 @@ async function twitterCompany() {
         {
           role: "user",
           content:
-            "Write an Educational  tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Write an Educational tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 35 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
@@ -167,7 +167,7 @@ async function linkedin() {
         {
           role: "user",
           content:
-            "Write an Educational  tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Write an Educational Post on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Post should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
@@ -227,7 +227,7 @@ async function linkedinCompany() {
         {
           role: "user",
           content:
-            "Write an Educational  tweet on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Tweet should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
+            "Write an Educational post on the benefit of commercial real estate NFTs. GloComX offers commercial real estate NFTs solution to accredited investors. Developers and Investors can participate with metamask wallet. Post should be less than 200 words. insert source link, add hashtag and emojis. tweet should provoke engagement, human tales and personal element that engenders trust",
         },
       ],
     });
