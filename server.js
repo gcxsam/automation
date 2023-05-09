@@ -207,6 +207,53 @@ async function twitter2() {
   }
 }
 
+async function twitter3() {
+  try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+        },
+        {
+          role: "user",
+          content:
+            process.env.TWITTER_TITLE5,
+        },
+      ],
+    });
+    const result = response.data.choices[0].message.content;
+    console.log(result);
+    if (result) {
+      const client = new TwitterApi({
+        appKey: process.env.API_KEY4,
+        appSecret: process.env.API_SECRET4,
+        accessToken: process.env.ACCESS_TOKEN4,
+        accessSecret: process.env.ACCESS_TOKEN_SECRET4,
+      });
+
+      const twitterClient = client.readWrite;
+
+      const tweet = async () => {
+        try {
+          await twitterClient.v2.tweet(result + " #glocomx #nfts #blockchain");
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      tweet();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function linkedin() {
   try {
     const configuration = new Configuration({
@@ -393,6 +440,7 @@ cron.schedule("*/30 * * * *", () => {
   twitterCompany()
   twitter1()
   twitter2()
+  twitter3()
 });
 
 cron.schedule("*/120 * * * *", () => {
