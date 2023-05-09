@@ -5,6 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { TwitterApi } from "twitter-api-v2";
 import axios from "axios";
 import cron from "node-cron";
+const Reddit = require("reddit");
 dotenv.config();
 
 const app = express();
@@ -29,12 +30,12 @@ async function twitter() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
         },
         {
           role: "user",
-          content:
-            process.env.TWITTER_TITLE1,
+          content: process.env.TWITTER_TITLE1,
         },
       ],
     });
@@ -77,12 +78,12 @@ async function twitterCompany() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
         },
         {
           role: "user",
-          content:
-            process.env.TWITTER_TITLE2,
+          content: process.env.TWITTER_TITLE2,
         },
       ],
     });
@@ -125,12 +126,12 @@ async function twitter1() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
         },
         {
           role: "user",
-          content:
-            process.env.TWITTER_TITLE3,
+          content: process.env.TWITTER_TITLE3,
         },
       ],
     });
@@ -172,12 +173,12 @@ async function twitter2() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
         },
         {
           role: "user",
-          content:
-            process.env.TWITTER_TITLE4,
+          content: process.env.TWITTER_TITLE4,
         },
       ],
     });
@@ -219,12 +220,12 @@ async function twitter3() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer concisely",
         },
         {
           role: "user",
-          content:
-            process.env.TWITTER_TITLE5,
+          content: process.env.TWITTER_TITLE5,
         },
       ],
     });
@@ -266,12 +267,12 @@ async function linkedin() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
         },
         {
           role: "user",
-          content:
-            process.env.LINKEDIN_TITLE1,
+          content: process.env.LINKEDIN_TITLE1,
         },
       ],
     });
@@ -326,12 +327,12 @@ async function linkedinCompany() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
         },
         {
           role: "user",
-          content:
-            process.env.LINKEDIN_TITLE2,
+          content: process.env.LINKEDIN_TITLE2,
         },
       ],
     });
@@ -386,12 +387,12 @@ async function linkedin1() {
       messages: [
         {
           role: "system",
-          content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
         },
         {
           role: "user",
-          content:
-           process.env.LINKEDIN_TITLE3,
+          content: process.env.LINKEDIN_TITLE3,
         },
       ],
     });
@@ -434,19 +435,68 @@ async function linkedin1() {
   }
 }
 
+async function reddit() {
+  const reddit = new Reddit({
+    username: process.env.reddit_username,
+    password: process.env.reddit_password,
+    appId: process.env.reddit_app_id,
+    appSecret: process.env.reddit_app_secret,
+    userAgent: "MyApp/1.0.0 (http://example.com)",
+  });
+
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
+
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content:
+          "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+      },
+      {
+        role: "user",
+        content: process.env.reddit_prompt,
+      },
+    ],
+  });
+  const result = response.data.choices[0].message.content;
+  console.log(result);
+  if (result) {
+    try {
+      const res = await reddit.post("/api/submit", {
+        sr: "Glocomx",
+        kind: "self",
+        resubmit: true,
+        title: process.env.reddit_title,
+        text: result,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
 
 cron.schedule("*/30 * * * *", () => {
   twitter();
-  twitterCompany()
-  twitter1()
-  twitter2()
-  twitter3()
+  twitterCompany();
+  twitter1();
+  twitter2();
+  twitter3();
 });
 
 cron.schedule("*/120 * * * *", () => {
   linkedin();
   linkedinCompany();
-  linkedin1()
+  linkedin1();
+});
+
+cron.schedule("*/120 * * * *", () => {
+  reddit();
 });
 
 app.listen(5000, () =>

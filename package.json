@@ -16,6 +16,7 @@
     "node-cron": "^3.0.2",
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
+    "reddit": "^1.2.1",
     "twitter-api-v2": "^1.14.2"
   }
 }
