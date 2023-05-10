@@ -481,7 +481,7 @@ async function reddit() {
   }
 }
 
-cron.schedule("*/30 * * * *", () => {
+cron.schedule("*/60 * * * *", () => {
   twitter();
   twitterCompany();
   twitter1();
@@ -489,13 +489,13 @@ cron.schedule("*/30 * * * *", () => {
   twitter3();
 });
 
-cron.schedule("*/120 * * * *", () => {
+cron.schedule("*/240 * * * *", () => {
   linkedin();
   linkedinCompany();
   linkedin1();
 });
 
-cron.schedule("*/120 * * * *", () => {
+cron.schedule("*/240 * * * *", () => {
   reddit();
 });
 
