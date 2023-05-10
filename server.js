@@ -5,7 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { TwitterApi } from "twitter-api-v2";
 import axios from "axios";
 import cron from "node-cron";
-const Reddit = require("reddit");
+import Reddit from "reddit";
 dotenv.config();
 
 const app = express();
