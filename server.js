@@ -435,6 +435,66 @@ async function linkedin1() {
   }
 }
 
+async function linkedin2() {
+  try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+        },
+        {
+          role: "user",
+          content: process.env.LINKEDIN_TITLE4,
+        },
+      ],
+    });
+    const result = response.data.choices[0].message.content;
+    console.log(result);
+    if (result) {
+      const postData = {
+        author: `urn:li:person:${process.env.PERSON_ID3}`,
+        lifecycleState: "PUBLISHED",
+        specificContent: {
+          "com.linkedin.ugc.ShareContent": {
+            shareCommentary: {
+              text: result,
+            },
+            shareMediaCategory: "NONE",
+          },
+        },
+        visibility: {
+          "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
+        },
+      };
+
+      axios
+        .post("https://api.linkedin.com/v2/ugcPosts", postData, {
+          headers: {
+            Authorization: `Bearer ${process.env.LINKEDIN_ACCESS_TOKEN3}`,
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+        });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function reddit() {
   const reddit = new Reddit({
     username: process.env.reddit_username,
@@ -493,6 +553,7 @@ cron.schedule("*/240 * * * *", () => {
   linkedin();
   linkedinCompany();
   linkedin1();
+  linkedin2();
 });
 
 cron.schedule("*/240 * * * *", () => {
