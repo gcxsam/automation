@@ -597,16 +597,17 @@ cron.schedule("*/60 * * * *", () => {
   twitter4();
 });
 
-cron.schedule("*/240 * * * *", () => {
+cron.schedule("0 */4 * * *", () => {
   linkedin();
   linkedinCompany();
   linkedin1();
   linkedin2();
+  reddit()
 });
 
-cron.schedule("*/240 * * * *", () => {
-  reddit();
-});
+// cron.schedule("0 */4 * * *", () => {
+//   reddit();
+// });
 
 app.listen(5000, () =>
   console.log("AI server started on http://localhost:5000")
