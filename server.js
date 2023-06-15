@@ -588,6 +588,71 @@ async function reddit() {
   }
 }
 
+async function facebook() {
+  try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are ChatGPT, a large language model trained by OpenAI. Answer in detail",
+        },
+        {
+          role: "user",
+          content: `${process.env.facebook_post_title}`,
+        },
+      ],
+    });
+    const result = response.data.choices[0].message.content;
+
+    const url = "https://api.openai.com/v1/images/generations";
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    };
+
+    const data = {
+      prompt: `${process.env.facebook_image_title}`,
+      n: 1,
+      size: "512x512",
+    };
+
+    axios
+      .post(url, data, { headers })
+      .then((response) => {
+        const imgOutput = response.data.data[0].url;
+
+        if (result && imgOutput) {
+          axios
+            .post(
+              `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
+              {
+                url: imgOutput,
+                caption: result,
+              }
+            )
+            .then((response) => {
+              console.log("Posted on Facebook successfully", response.data);
+            })
+            .catch((error) => {
+              console.error(error.response.data);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 cron.schedule("*/60 * * * *", () => {
   twitter();
   twitterCompany();
@@ -602,12 +667,13 @@ cron.schedule("0 */4 * * *", () => {
   linkedinCompany();
   linkedin1();
   linkedin2();
-  reddit()
+  reddit();
 });
 
-// cron.schedule("0 */4 * * *", () => {
-//   reddit();
-// });
+cron.schedule("*/30 * * * *", () => {
+  facebook();
+});
+
 
 app.listen(5000, () =>
   console.log("AI server started on http://localhost:5000")
