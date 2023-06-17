@@ -616,7 +616,6 @@ async function facebook() {
         .post(
           `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
           {
-            url: imgOutput,
             caption: result,
           }
         )
@@ -671,6 +670,10 @@ async function facebook() {
   }
 }
 
+cron.schedule("*/30 * * * *", () => {
+  facebook();
+});
+
 cron.schedule("*/60 * * * *", () => {
   twitter();
   twitterCompany();
@@ -687,11 +690,6 @@ cron.schedule("0 */4 * * *", () => {
   linkedin2();
   reddit();
 });
-
-cron.schedule("*/30 * * * *", () => {
-  facebook();
-});
-
 
 app.listen(5000, () =>
   console.log("AI server started on http://localhost:5000")
