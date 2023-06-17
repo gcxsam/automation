@@ -611,43 +611,61 @@ async function facebook() {
     });
     const result = response.data.choices[0].message.content;
 
-    const url = "https://api.openai.com/v1/images/generations";
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-    };
+    if (result) {
+      axios
+        .post(
+          `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
+          {
+            url: imgOutput,
+            caption: result,
+          }
+        )
+        .then((response) => {
+          console.log("Posted on Facebook successfully", response.data);
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+        });
+    }
 
-    const data = {
-      prompt: `${process.env.facebook_image_title}`,
-      n: 1,
-      size: "512x512",
-    };
 
-    axios
-      .post(url, data, { headers })
-      .then((response) => {
-        const imgOutput = response.data.data[0].url;
+    // const url = "https://api.openai.com/v1/images/generations";
+    // const headers = {
+    //   "Content-Type": "application/json",
+    //   Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    // };
 
-        if (result && imgOutput) {
-          axios
-            .post(
-              `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
-              {
-                url: imgOutput,
-                caption: result,
-              }
-            )
-            .then((response) => {
-              console.log("Posted on Facebook successfully", response.data);
-            })
-            .catch((error) => {
-              console.error(error.response.data);
-            });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // const data = {
+    //   prompt: `${process.env.facebook_image_title}`,
+    //   n: 1,
+    //   size: "512x512",
+    // };
+
+    // axios
+    //   .post(url, data, { headers })
+    //   .then((response) => {
+    //     const imgOutput = response.data.data[0].url;
+
+    //     if (result && imgOutput) {
+    //       axios
+    //         .post(
+    //           `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
+    //           {
+    //             url: imgOutput,
+    //             caption: result,
+    //           }
+    //         )
+    //         .then((response) => {
+    //           console.log("Posted on Facebook successfully", response.data);
+    //         })
+    //         .catch((error) => {
+    //           console.error(error.response.data);
+    //         });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   } catch (error) {
     console.error(error);
   }
