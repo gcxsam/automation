@@ -614,9 +614,9 @@ async function facebook() {
     if (result) {
       axios
         .post(
-          `https://graph.facebook.com/${process.env.facebook_page_id}/photos?access_token=${process.env.facebook_access_token}`,
+          `https://graph.facebook.com/${process.env.facebook_page_id}/feed?access_token=${process.env.facebook_access_token}`,
           {
-            caption: result,
+            message: result,
           }
         )
         .then((response) => {
@@ -670,9 +670,9 @@ async function facebook() {
   }
 }
 
-cron.schedule("*/30 * * * *", () => {
-  facebook();
-});
+facebook();
+// cron.schedule("*/30 * * * *", () => {
+// });
 
 cron.schedule("*/60 * * * *", () => {
   twitter();
