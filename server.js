@@ -670,9 +670,9 @@ async function facebook() {
   }
 }
 
-facebook();
-// cron.schedule("*/30 * * * *", () => {
-// });
+cron.schedule("*/30 * * * *", () => {
+  facebook();
+});
 
 cron.schedule("*/60 * * * *", () => {
   twitter();
